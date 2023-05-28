@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, request, jsonify
 import random
 app = Flask(__name__)
 rows = 7
-cols = 16
+cols = 18
 
 
 def generate_random_boxes():
