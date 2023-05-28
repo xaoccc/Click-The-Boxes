@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request, jsonify
+from flask import Flask, render_template, redirect, request
 import random
 app = Flask(__name__)
 rows = 7
@@ -27,8 +27,8 @@ game_over = False
 
 
 def click(position):
-    col = position[0]
-    row = position[1]
+    row = position[0]
+    col = position[1]
 
     box = boxes[row][col]
     global score
@@ -46,14 +46,20 @@ def click(position):
     return redirect("/")
 
 
-@app.route('/Click')
+@app.route('/Click', methods=['GET', 'POST'])
 def click_on_box():
-    position = [int(i) for i in request.args['position']]
+    position = request.values.get('position')[1:-1]
+    position = [int(i) for i in position.split(',')]
+    # return f"You clicked: {position}"
     return click(position)
 
-@app.route('/')
+
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template("index.html", rows=rows, boxes=boxes, cols=cols, score=score, game_over=game_over, click=click)
+    if request.method == 'POST':
+        position = request.values.get('position')
+        return f"You clicked: {position}"
+    return render_template("index.html", rows=rows, boxes=boxes, cols=cols, score=score, game_over=game_over)
 
 
 @app.route('/Reset')
