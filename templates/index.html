@@ -18,7 +18,7 @@
     {% for row in range(rows) %}
         {% for col in range(cols) %}
             <form class="box" action="/Click"  >
-                <button type="submit" class="box-{{boxes[row][col]}}"></button>
+                <button name="position" value="[{{row}},{{col}}]" type="submit" class="box-{{boxes[row][col]}}"></button>
             </form>
         {% endfor %}
         <br />

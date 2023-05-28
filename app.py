@@ -26,31 +26,29 @@ score = 0
 game_over = False
 
 
-def click(position, start_row, step):
-    col = position * (cols - 1) // 100
-    row = start_row
-    while 0 <= row < rows:
-        box = boxes[row][col]
-        global score
-        if box == 'yellow':
-            score += 1
-        elif box == 'orange':
-            score += 3
-        elif box == 'green':
-            score += 5
-        elif box == 'purple':
-            score += 10
-        break
+def click(position):
+    col = position[0]
+    row = position[1]
 
-        row = row + step
+    box = boxes[row][col]
+    global score
+    if box == 'yellow':
+        score += 1
+    elif box == 'orange':
+        score += 3
+    elif box == 'green':
+        score += 5
+    elif box == 'purple':
+        score += 10
 
     return redirect("/")
 
 
 @app.route('/Click')
 def click_on_box():
-    position = int(request.args['position'])
-    return click(position, 0, 1)
+    position = [int(i) for i in request.args['position']]
+
+    return click(position)
 
 @app.route('/')
 def index():
