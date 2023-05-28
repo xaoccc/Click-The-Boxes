@@ -41,13 +41,14 @@ def click(position):
     elif box == 'purple':
         score += 10
 
+    boxes[row][col] = "red"
+
     return redirect("/")
 
 
 @app.route('/Click')
 def click_on_box():
     position = [int(i) for i in request.args['position']]
-
     return click(position)
 
 @app.route('/')

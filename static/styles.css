@@ -23,6 +23,9 @@ display: inline-block;
 .box-purple{
     background: purple;
 }
+.box-red{
+    background: red;
+}
 .box-green{
     background: green;
 }
