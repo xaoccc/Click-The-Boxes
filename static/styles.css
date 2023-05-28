@@ -1,0 +1,61 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+form {
+    height:36px;
+}
+h2 {
+    color: #333;
+}
+
+.box-purple, .box-green, .box-yellow, .box-orange{
+    height: 80px;
+    width: 80px;
+    border: 1px;
+    margin: 0;
+    padding: 0;
+
+}
+.box {
+display: inline-block;
+}
+.box-purple{
+    background: purple;
+}
+.box-green{
+    background: green;
+}
+.box-yellow{
+    background: yellow;
+}
+.box-orange{
+    background: orange;
+}
+.reset-button {
+    background-color: #eef7ff;
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: #b1deff;
+    padding: 3px;
+}
+.text {
+    display: inline-block;
+    vertical-align: top;
+}
+.attack input:hover, .reset-button:hover{
+    background-color: #13157c;
+    color: white;
+    border-color: black;
+    cursor: pointer;
+}
+.scroll:hover{
+    cursor: pointer;
+}
+#top-scroll-form {
+    margin-top: 10px;
+
+}
+#top-scroll-form-text{
+    padding-right: 26px;
+}

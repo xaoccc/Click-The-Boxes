@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles.css') }}">
+<head>
+    <meta charset="UTF-8">
+    <title>Click The Boxes</title>
+</head>
+<body>
+
+<form action="/Reset">
+      <input class="reset-button" type="submit" value="New Game">
+</form>
+{% if game_over %}
+    <h2>Game Over!</h2>
+    <img src="/static/explosion.png">
+{% else %}
+    {% for row in range(rows) %}
+        {% for col in range(cols) %}
+            <form class="box" action="/Click"  >
+                <button type="submit" class="box-{{boxes[row][col]}}"></button>
+            </form>
+        {% endfor %}
+        <br />
+    {% endfor %}
+    <h2>Score: <b>{{score}}</b></h2>
+{% endif %}
+</body>
+</html>
