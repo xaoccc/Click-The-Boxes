@@ -50,7 +50,6 @@ def click(position):
 def click_on_box():
     position = request.values.get('position')[1:-1]
     position = [int(i) for i in position.split(',')]
-    # return f"You clicked: {position}"
     return click(position)
 
 
