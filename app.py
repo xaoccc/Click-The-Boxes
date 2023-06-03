@@ -21,9 +21,38 @@ def generate_random_boxes():
     return boxes
 
 
+
+
+
 boxes = generate_random_boxes()
 score = 0
 game_over = False
+
+def mark_red(boxes, row, col, box):
+    global score
+    if row < 0 or row >= rows or col < 0 or col >= cols:
+        return
+
+    if boxes[row][col] != box:
+        return
+
+    if boxes[row][col] == box:
+        if box == 'yellow':
+            score += 1
+        elif box == 'orange':
+            score += 3
+        elif box == 'green':
+            score += 5
+        elif box == 'purple':
+            score += 10
+        boxes[row][col] = "red"
+
+    mark_red(boxes, row - 1, col, box)
+    mark_red(boxes, row, col - 1, box)
+    mark_red(boxes, row + 1, col, box)
+    mark_red(boxes, row, col + 1, box)
+
+    return boxes
 
 
 def click(position):
@@ -32,16 +61,8 @@ def click(position):
 
     box = boxes[row][col]
     global score
-    if box == 'yellow':
-        score += 1
-    elif box == 'orange':
-        score += 3
-    elif box == 'green':
-        score += 5
-    elif box == 'purple':
-        score += 10
 
-    boxes[row][col] = "red"
+    mark_red(boxes, row, col, box)
 
     return redirect("/")
 
