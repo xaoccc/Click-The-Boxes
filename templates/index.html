@@ -7,24 +7,31 @@
     <title>Click The Boxes</title>
 </head>
 <body>
+    <div id="wrapper">
+        <h2>Click The Boxes</h2>
+        <h4>Rules of the game:</h4>
+        <p id="description">Click the boxes with most of the same color around them. When you click on a box, the whole color sector resets and the total points of the color boxes from this sector add to your score. In 24 seconds the game resets. Try to score as much points as possible in 24 seconds</p>
 
-<form action="/Reset">
-      <input class="reset-button" type="submit" value="New Game">
-</form>
-{% if game_over %}
-    <h2>Game Over!</h2>
-    <img src="/static/explosion.png">
-{% else %}
-    {% for row in range(rows) %}
-        {% for col in range(cols) %}
-            <form class="box" action="/Click" method="POST" >
-                <button name="position" value="[{{row}},{{col}}]" type="submit" class="box-{{boxes[row][col]}}"></button>
-            </form>
+        <p>Yellow box score: 1 point</p>
+        <p>Orange box score: 3 points</p>
+        <p>Green box score: 5 points</p>
+        <p>Purple box score: 10 points</p>
+        {% for row in range(rows) %}
+            {% for col in range(cols) %}
+                <form class="box" action="/Click" method="POST" >
+                    <button name="position" value="[{{row}},{{col}}]" type="submit" class="box-{{boxes[row][col]}}"></button>
+                </form>
+            {% endfor %}
+            <br />
         {% endfor %}
-        <br />
-    {% endfor %}
-    <h2>Score: <b>{{score}}</b></h2>
-    <h4>Your best score is <b>{{best_score}}</b></h4>
-{% endif %}
+        <h2>Score: <b>{{score}}</b></h2>
+        <h4>Your best score is <b>{{best_score}}</b></h4>
+
+        <p>Click here to reset the game and best score:</p>
+        <form action="/Reset">
+              <input class="reset-button" type="submit" value="New Game">
+        </form>
+    </div>
+
 </body>
 </html>

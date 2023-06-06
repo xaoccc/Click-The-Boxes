@@ -1,8 +1,9 @@
 from flask import Flask, render_template, redirect, request
 import random, datetime
 app = Flask(__name__)
+
 rows = 7
-cols = 18
+cols = 10
 
 
 def generate_random_boxes():
@@ -76,7 +77,6 @@ def unmark_red(boxes, row, col, box):
 
 
 def click(position):
-    global score
     row = position[0]
     col = position[1]
     box = boxes[row][col]
@@ -88,17 +88,14 @@ def click(position):
 boxes = generate_random_boxes()
 score = 0
 all_scores = [0]
-game_over = False
 start = datetime.datetime.now()
 
 
-def reset():
+def game_reset():
     global boxes
     boxes = generate_random_boxes()
     global score
     score = 0
-    global game_over
-    game_over = False
     return redirect('/')
 
 
@@ -111,17 +108,17 @@ def click_on_box():
     end = datetime.datetime.now()
     time_diff = end - start
     time_diff = time_diff.seconds
-    if time_diff > 10:
+    if time_diff > 24:
         all_scores.append(score)
         start = datetime.datetime.now()
-        return reset()
+        return game_reset()
 
     return click(position)
 
 
 @app.route('/', methods=['GET'])
 def index():
-    return render_template("index.html", rows=rows, boxes=boxes, cols=cols, score=score, game_over=game_over, best_score=max(all_scores))
+    return render_template("index.html", rows=rows, boxes=boxes, cols=cols, score=score, best_score=max(all_scores))
 
 
 @app.route('/Reset')
@@ -130,10 +127,9 @@ def reset():
     boxes = generate_random_boxes()
     global score
     score = 0
-    global game_over
-    game_over = False
+    global all_scores
+    all_scores = [0]
     return redirect('/')
-
 
 
 if __name__ == "__main__":
