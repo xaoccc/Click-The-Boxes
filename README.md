@@ -11,3 +11,6 @@ Purple box score: 10 points
 Written with Flask 2.3.2
 
 ## You can run the app <a href="http://xaoccc.pythonanywhere.com/">here</a>.
+
+## Screenshot:
+<img scr="screenshot.jpg" />
