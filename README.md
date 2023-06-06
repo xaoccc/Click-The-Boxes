@@ -13,4 +13,4 @@ Written with Flask 2.3.2
 ## You can run the app <a href="http://xaoccc.pythonanywhere.com/">here</a>.
 
 ## Screenshot:
-<img scr="screenshot.jpg" />
+<img src="https://github.com/xaoccc/Click-The-Boxes/blob/main/screenshot.jpg" />
