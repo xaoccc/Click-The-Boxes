@@ -1,7 +1,7 @@
 # Web Game Click The Boxes
 
 Rules:  
-Click the boxes with most of the same color around them. Whem you click on a box, the whole color sector resets and the total points of the color boxes from this sector add to your score. In 24 seconds the game resets. Try to score as much points as possible in 10 seconds.  
+Click the boxes with most of the same color around them. Whem you click on a box, the whole color sector resets and the total points of the color boxes from this sector add to your score. In 24 seconds the game resets. Try to score as much points as possible in 24 seconds.  
 
 Yellow box score: 1 point  
 Orange box score: 3 points  
